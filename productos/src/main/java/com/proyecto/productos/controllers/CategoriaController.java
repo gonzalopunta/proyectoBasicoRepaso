@@ -3,7 +3,6 @@ package com.proyecto.productos.controllers;
 import com.proyecto.productos.models.Categoria;
 import com.proyecto.productos.services.CategoriaService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

@@ -17,9 +17,4 @@ public class Pedido {
     private long id;
 
     private String fecha;
-    private boolean estado;
-
-    @OneToMany
-    private Usuario idCliente;
-
 }

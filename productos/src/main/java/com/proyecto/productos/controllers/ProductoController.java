@@ -4,6 +4,7 @@ import com.proyecto.productos.models.Producto;
 import com.proyecto.productos.services.ProductoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,9 @@ public class ProductoController {
     private final ProductoService productoService;
 
     @GetMapping("/")
-    public List<Producto> mostrarTodos(){
-        return productoService.mostrarProductos();
+    public String mostrarTodos(Model p){
+        p.addAttribute("listado", productoService.mostrarProductos());
+        return"listado/productos";
     }
 
     @PostMapping("/create")
@@ -30,7 +32,6 @@ public class ProductoController {
         return productoService.findById(id).map(editandoProducto -> {
         editandoProducto.setNombreProducto(p.getNombreProducto());
         editandoProducto.setPrecio(p.getPrecio());
-        editandoProducto.setEstado(p.isEstado());
         return productoService.save(editandoProducto);
         }).orElseThrow(() -> new NullPointerException());
     }

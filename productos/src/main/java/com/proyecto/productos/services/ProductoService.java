@@ -14,7 +14,6 @@ public class ProductoService extends ServicioBaseImpl <Producto, Long, ProductoR
         return this.findAll().stream().map(p -> {
             p.setNombreProducto(p.getNombreProducto());
             p.setPrecio(p.getPrecio());
-            p.setEstado(p.isEstado());
             return p;
         }).collect(Collectors.toList());
     }

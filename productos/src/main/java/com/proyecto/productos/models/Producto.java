@@ -16,7 +16,5 @@ public class Producto {
     private long id;
 
     private String nombreProducto;
-    private double precio;
-    private boolean estado;
-
+    private float precio;
 }

@@ -14,7 +14,4 @@ public class Categoria {
     private long id;
 
     private String nombre;
-
-    @OneToMany
-    private Producto producto;
 }

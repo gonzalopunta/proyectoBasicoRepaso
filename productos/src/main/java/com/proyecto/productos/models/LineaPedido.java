@@ -15,11 +15,4 @@ public class LineaPedido {
 
     @Id @GeneratedValue
     private long id;
-
-    @ManyToOne
-    private Pedido idPedido;
-
-    @ManyToOne
-    private Producto idProducto;
-
 }
