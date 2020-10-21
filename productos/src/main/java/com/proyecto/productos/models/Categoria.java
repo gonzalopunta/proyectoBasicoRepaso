@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity @Data @Builder @AllArgsConstructor @NoArgsConstructor
 public class Categoria {
@@ -16,4 +14,7 @@ public class Categoria {
     private long id;
 
     private String nombre;
+
+    @OneToMany
+    private Producto producto;
 }

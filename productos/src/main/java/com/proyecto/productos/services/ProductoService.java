@@ -18,5 +18,4 @@ public class ProductoService extends ServicioBaseImpl <Producto, Long, ProductoR
             return p;
         }).collect(Collectors.toList());
     }
-
 }
