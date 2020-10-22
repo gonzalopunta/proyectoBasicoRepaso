@@ -23,8 +23,9 @@ public class ProductoController {
     }
 
     @PostMapping("/create")
-    public Producto nuevoProducto(Producto nuevo){
-        return productoService.save(nuevo);
+    public String nuevoProducto(Producto nuevo){
+        Producto producto = productoService.save(nuevo);
+        return "../crear/nuevoProducto";
     }
 
     @PutMapping("/edit/{id}")
