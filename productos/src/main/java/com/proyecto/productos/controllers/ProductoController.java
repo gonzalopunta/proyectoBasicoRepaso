@@ -22,31 +22,34 @@ public class ProductoController {
         return"listado/productos";
     }
 
-    @PostMapping("/create")
+    @GetMapping("/create/")
     public String nuevoProducto(Producto nuevo){
         Producto producto = productoService.save(nuevo);
-        return "../crear/nuevoProducto";
+        return "crear/nuevoProducto";
     }
 
-    @PutMapping("/edit/{id}")
-    public Producto editarProducto(@PathVariable Long id, Producto p){
-        return productoService.findById(id).map(editandoProducto -> {
-        editandoProducto.setNombreProducto(p.getNombreProducto());
-        editandoProducto.setPrecio(p.getPrecio());
-        return productoService.save(editandoProducto);
-        }).orElseThrow(() -> new NullPointerException());
+    @PutMapping("/edit/{id}/")
+    public String editarProducto(@PathVariable Long id, Producto p){
+        if (productoService.findById(id) != null) {
+             productoService.findById(id).map(editandoProducto -> {
+                 editandoProducto.setNombreProducto(p.getNombreProducto());
+                 editandoProducto.setPrecio(p.getPrecio());
+                 return productoService.save(editandoProducto);
+            }).orElseThrow(() -> new NullPointerException());
+        }
+        return "modificar/producto";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public Producto deleteProducto(@PathVariable Long id){
+    @DeleteMapping("/delete/{id}/")
+    public String deleteProducto(@PathVariable Long id){
         if (productoService.findById(id) != null) {
             Producto p = productoService.findById(id).get();
             productoService.deleteById(id);
-            return p;
         }
         else {
-            return null;
+            return "El producto no se puede borrar porque no existe";
         }
+        return "listado/productos";
     }
 
 
