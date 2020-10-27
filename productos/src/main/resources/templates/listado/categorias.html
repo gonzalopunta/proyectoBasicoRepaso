@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<h1>Lista de Categorias</h1>
+<table>
+    <a th:href="@{/categoria/create/}">Crear nueva categoria</a>
+    <tr>
+        <th>Categoria</th>
+    </tr>
+    <tr th:each="categoria : ${categoria}">
+        <td th:text="${categoria.nombre}"></td>
+    </tr>
+</table>
 </body>
 </html>

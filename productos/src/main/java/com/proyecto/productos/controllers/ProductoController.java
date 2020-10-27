@@ -23,9 +23,16 @@ public class ProductoController {
     }
 
     @GetMapping("/create/")
-    public String nuevoProducto(Producto nuevo){
-        Producto producto = productoService.save(nuevo);
+    public String nuevoProducto(Model p){
+        Producto nuevoProducto = new Producto();
+        p.addAttribute("producto", nuevoProducto);
         return "crear/nuevoProducto";
+    }
+
+    @PostMapping("/create/")
+    public String anadirProducto(Producto nuevo){
+        productoService.save(nuevo);
+        return "redirect:/listado/productos";
     }
 
     @PutMapping("/edit/{id}/")

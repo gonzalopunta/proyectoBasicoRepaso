@@ -4,6 +4,7 @@ import com.proyecto.productos.models.Categoria;
 import com.proyecto.productos.services.CategoriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,13 +17,21 @@ public class CategoriaController {
     private final CategoriaService categoriaService;
 
     @GetMapping("/")
-    public List<Categoria> mostrarTodas(){
-        return categoriaService.mostrarCategorias();
+    public String mostrarTodas(Model c){
+        c.addAttribute("categoria", categoriaService.mostrarCategorias());
+        return "listado/categorias";
+    }
+
+    @GetMapping("/create")
+    public String nuevaCategoria(Model c){
+        c.addAttribute("categoria", new Categoria());
+        return "crear/nuevaCategoria";
     }
 
     @PostMapping("/create")
-    public Categoria nuevaCategoria(Categoria nueva){
-        return categoriaService.save(nueva);
+    public String anadirCategoria(Categoria nueva){
+        categoriaService.save(nueva);
+        return "redirect:/listado/categorias";
     }
 
     @PutMapping("/edit/{id}")
