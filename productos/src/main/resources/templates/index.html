@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<h1>Iniciar sesion</h1>
+
+<form action="/producto/">
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" name="usuario"><br><br>
+    <label for="contraseña">Contraseña:</label>
+    <input type="text" id="contraseña" name="contraseña"><br><br>
+    <input type="submit" value="Login">
+</form>
 
 </body>
 </html>
